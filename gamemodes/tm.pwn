@@ -43,7 +43,6 @@ new bool:InToyMaker[MAX_PLAYERS];
 new EditorStates:EditorState[MAX_PLAYERS];
 new EditorSelectState:SelectedXYZ[MAX_PLAYERS];
 new Float:Multiplier[MAX_PLAYERS];
-new ToyPrices[MAX_PLAYERS][2];
 
 //Info
 new ToyModelid[MAX_PLAYERS];
@@ -110,7 +109,7 @@ stock SendPlayerToysInfo(playerid)
     }
 
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/skin {ffffff}- Cambia tu skin de manera rapida.");
-    SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/rtoy {ffffff}- Elimina el accesorio y reseta las cordenadas.");
+    SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/rtoy {ffffff}- Valores predeterminados del editor.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/toys {ffffff}- Entrar al creador de accesorios.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/pc {ffffff}- Usar el editor de toys de SA-MP para ordenador.");
     return 1;
@@ -705,8 +704,6 @@ public OnPlayerConnect(playerid)
 
     ToyModelid[playerid] = -1;
     ToyBone[playerid] = 1;
-    ToyPrices[playerid][0] = 0;
-    ToyPrices[playerid][1] = 0;
 
     EditorState[playerid] = EDITOR_STATE_NONE;
     SelectedXYZ[playerid] = EDITOR_SEL_NONE;
@@ -1119,44 +1116,53 @@ CMD:toys(playerid, params[])
 
 CMD:rtoy(playerid, params[])
 {
+    HidePlayerToyMaker(playerid);
+
+    CurrentSkin[playerid] = -1;
     for(new i = 0; i < 3; i++) ToyPos[playerid][i] = 0.0;
     for(new i = 0; i < 3; i++) ToyRot[playerid][i] = 0.0;
     for(new i = 0; i < 3; i++) ToySize[playerid][i] = 1.0;
+    InToyMaker[playerid] = false;
+    Multiplier[playerid] = 1.0;
 
     ToyModelid[playerid] = -1;
     ToyBone[playerid] = 1;
-    
+
+    EditorState[playerid] = EDITOR_STATE_NONE;
+    SelectedXYZ[playerid] = EDITOR_SEL_NONE;
+
     RemovePlayerAttachedObject(playerid, 1);
 
-    SendClientMessage(playerid, -1, "Los valores del accesorio se han reseteado.");
+    SendClientMessage(playerid, X_ALERT_COLOR, "Se han establecido los valores por defecto en el editor.");
     return 1;
 }
 
 CMD:skin(playerid, params[])
 {
-    if(sscanf(params, "d", params[0])) return SendClientMessage(playerid, -1, "Usa /skin [ID]");
+    if(sscanf(params, "d", params[0])) return SendClientMessage(playerid, X_ALERT_COLOR, "Usa /skin [ID]");
     if(params[0] > 311)
     {
         CurrentSkin[playerid] = 311;
         SetPlayerSkin(playerid, CurrentSkin[playerid]);
+        SendClientMessage(playerid, X_ALERT_COLOR, "Solo hay 311 skins.");
         return 1;
     }
 
     CurrentSkin[playerid] = params[0];
     SetPlayerSkin(playerid, CurrentSkin[playerid]);
 
-    SendClientMessage(playerid, -1, "Tu skin ha sido cambiada correctamente.");
+    SendClientMessage(playerid, -1, "Tu skin se ha cambiado.");
     return 1;
 }
 
 CMD:pc(playerid, params[])
 {
-    if(!InToyMaker[playerid]) return SendClientMessage(playerid, -1, "No estas en el editor de toys.");
-    if(ToyModelid[playerid] == -1) return SendClientMessage(playerid, -1, "No has creado un toy.");
+    if(!InToyMaker[playerid]) return SendClientMessage(playerid, X_ALERT_COLOR, "No estas en el editor de toys.");
+    if(ToyModelid[playerid] == -1) return SendClientMessage(playerid, X_ALERT_COLOR, "No has creado un toy.");
     
     HidePlayerToyMaker(playerid);
     EditAttachedObject(playerid, 1);
-    
+
     SendClientMessage(playerid, X_ALERT_COLOR, "Si no puedes ver el editor significa que estas bug, o no eres de PC.");
     return 1;
 }
