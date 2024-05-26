@@ -17,10 +17,10 @@
 //Config
 #define     MAKER_VERSION       "1.2"
 
-#define     SERVER_NAME         "Dere's ToyMaker"
+#define     SERVER_NAME         "ToyMaker"
 
-#define     SERVER_INFO         "ToyMaker "MAKER_VERSION""
-#define     HOSTNAME            "(ES) • "SERVER_NAME"® • [Android/PC]"
+#define     SERVER_INFO         "Maker: "MAKER_VERSION" - Game: 0.3.7"
+#define     HOSTNAME            ""SERVER_NAME" - Spanish - PC/Android"
 
 #define     INFO_COLOR          "f6e58d"
 #define     COMMANDS_COLOR      "badc58"
