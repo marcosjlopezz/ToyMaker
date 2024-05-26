@@ -24,7 +24,9 @@
 
 #define     INFO_COLOR          "f6e58d"
 #define     COMMANDS_COLOR      "badc58"
+#define     ALERT_COLOR         "eb4d4b"
 
+#define     X_ALERT_COLOR       0xeb4d4bff
 #define     X_COMMANDS_COLOR     0xbadc58ff
 #define     X_INFO_COLOR        0xf6e58dff
 
@@ -1154,6 +1156,8 @@ CMD:pc(playerid, params[])
     
     HidePlayerToyMaker(playerid);
     EditAttachedObject(playerid, 1);
+    
+    SendClientMessage(playerid, X_ALERT_COLOR, "Si no puedes ver el editor significa que estas bug, o no eres de PC.");
     return 1;
 }
 
