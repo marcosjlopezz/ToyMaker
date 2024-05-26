@@ -1,0 +1,62 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[19:04:04] filterscripts = ""  (string)
+[19:04:04] 
+[19:04:04] Server Plugins
+[19:04:04] --------------
+[19:04:04]  Loading plugin: pawncmd.dll
+[19:04:04] [Pawn.CMD] plugin v3.4.0 loading...
+[19:04:04] [Pawn.CMD] 
+
+    | Pawn.CMD 3.4.0 | 2016 - 2023
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Feb 12 2023 at 18:12:31
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.CMD
+
+[19:04:04]   Loaded.
+[19:04:04]  Loading plugin: filemanager.dll
+[19:04:04] ******************
+[19:04:04] ** FILE MANAGER **
+[19:04:04] **    Loaded    **
+[19:04:04] ** Version 1.5 **
+[19:04:04] ******************
+[19:04:04]   Loaded.
+[19:04:04]  Loading plugin: sscanf.dll
+[19:04:05] 
+[19:04:05]  ===============================
+[19:04:05] 
+[19:04:05]       sscanf plugin loaded.     
+[19:04:05] 
+[19:04:05]          Version: 2.13.8
+[19:04:05] 
+[19:04:05]    (c) 2022 Alex "Y_Less" Cole  
+[19:04:05] 
+[19:04:05]  ===============================
+[19:04:05] 
+[19:04:05]   Loaded.
+[19:04:05]  Loading plugin: PawnPlus.dll
+[19:04:05]  PawnPlus v1.4.3 loaded
+[19:04:05]  Created by IS4
+[19:04:05]   Loaded.
+[19:04:05]  Loaded 4 plugins.
+
+[19:04:05] 
+[19:04:05] Filterscripts
+[19:04:05] ---------------
+[19:04:05]   Loaded 0 filterscripts.
+
+[19:04:05] Number of vehicle models: 0
+[19:04:55] [connection] incoming connection: 127.0.0.1:60644 id: 0
+[19:04:55] [join] Deadly_Dere has joined the server (0:127.0.0.1)
+[19:09:38] [part] Deadly_Dere has left the server (0:1)
