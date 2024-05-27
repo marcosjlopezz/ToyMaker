@@ -19,8 +19,8 @@
 
 #define     SERVER_NAME         "ToyMaker"
 
-#define     SERVER_INFO         "Maker: "MAKER_VERSION" - Game: 0.3.7"
-#define     HOSTNAME            ""SERVER_NAME" - Spanish - PC/Android"
+#define     SERVER_INFO         "AttachedObjects Maker r"MAKER_VERSION""
+#define     HOSTNAME            "» "SERVER_NAME" [0.3.7] «"
 
 #define     INFO_COLOR          "f6e58d"
 #define     COMMANDS_COLOR      "badc58"
@@ -306,7 +306,7 @@ public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Fl
             0xFFFFFFFF, 0xFFFFFFFF
         );
 
-        SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}Posicion Actualizada.");
+        SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}Se ha actualizado la posicion del objeto.");
     }
     else
     {
@@ -331,7 +331,7 @@ public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Fl
             0xFFFFFFFF, 0xFFFFFFFF
         );
 
-        SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}Ediccion cancelada.");
+        SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}Has cancelado el editor de PC, no se han guardado los cambios.");
     }
 
     ShowPlayerToyMaker(playerid);
@@ -655,7 +655,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 fwrite(export, str_text);
                 fclose(export);
 
-                SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}El archivo ha sido exportado correctamente.");
+                SendClientMessage(playerid, X_INFO_COLOR, "[Info] {ffffff}Se ha intentado exportar el archivo.");
+                SendClientMessage(playerid, X_ALERT_COLOR, "Si el archivo no aparece en scriptfiles/toymaker/ ha ocurrido un error");
             }
             return 1;
         }
