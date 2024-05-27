@@ -9,3 +9,6 @@ samp-server.exe
 #Log Files
 server_log.txt
 *.log
+
+#Compiled Files
+tm.amx
