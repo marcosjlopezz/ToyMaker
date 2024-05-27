@@ -15,20 +15,21 @@
 //#include <PawnPlus>
 
 //Config
-#define     MAKER_VERSION       "1.2"
+#define     MAKER_VERSION           "1.3"
 
-#define     SERVER_NAME         "ToyMaker"
+#define     SERVER_NAME             "ToyMaker"
 
-#define     SERVER_INFO         "Release "MAKER_VERSION""
-#define     HOSTNAME            "» "SERVER_NAME" [0.3.7] «"
+#define     SERVER_INFO             "Release "MAKER_VERSION""
+#define     HOSTNAME                "» "SERVER_NAME" [0.3.7] «"
 
-#define     INFO_COLOR          "f6e58d"
-#define     COMMANDS_COLOR      "badc58"
-#define     ALERT_COLOR         "eb4d4b"
+#define     INFO_COLOR              "f6e58d"
+#define     COMMANDS_COLOR          "badc58"
+#define     ALERT_COLOR             "eb4d4b"
 
-#define     X_ALERT_COLOR       0xeb4d4bff
-#define     X_COMMANDS_COLOR     0xbadc58ff
-#define     X_INFO_COLOR        0xf6e58dff
+#define     X_ALERT_COLOR           0xeb4d4bff
+#define     X_COMMANDS_COLOR        0xbadc58ff
+#define     X_INFO_COLOR            0xf6e58dff
+#define     SPECIAL_ACTION_PISSING  68
 
 //Macros
 #define MAX_TD_EDITOR   5
@@ -71,37 +72,38 @@ new ToysBones[][24] =
 };
 
 //Others
-new SpecialActions[][445] =
+new SpecialActions[][256] =
 {
-    {"{ffffff}SPECIAL_ACTION_NONE"},
-    {"{ffffff}SPECIAL_ACTION_USEJETPACK"},
-    {"{ffffff}SPECIAL_ACTION_DANCE1"},
-    {"{ffffff}SPECIAL_ACTION_DANCE2"},
-    {"{ffffff}SPECIAL_ACTION_DANCE3"},
-    {"{ffffff}SPECIAL_ACTION_DANCE4"},
-    {"{ffffff}SPECIAL_ACTION_HANDSUP"},
-    {"{ffffff}SPECIAL_ACTION_USECELLPHONE"},
-    {"{cccccc}SPECIAL_ACTION_SITTING*{ffffff}"},
-    {"{ffffff}SPECIAL_ACTION_STOPUSECELLPHONE"},
-    {"{ffffff}SPECIAL_ACTION_DUCK*"},
-    {"{cccccc}SPECIAL_ACTION_ENTER_VEHICLE *{ffffff}"},
-    {"{cccccc}SPECIAL_ACTION_EXIT_VEHICLE *{ffffff}"},
-    {"{ffffff}SPECIAL_ACTION_DRINK_BEER"},
-    {"{ffffff}SPECIAL_ACTION_SMOKE_CIGGY"},
-    {"{ffffff}SPECIAL_ACTION_DRINK_WINE"},
-    {"{ffffff}SPECIAL_ACTION_DRINK_SPRUNK"},
-    {"{ffffff}SPECIAL_ACTION_PISSING"},
-    {"{ffffff}SPECIAL_ACTION_CUFFED"},
-    {"{ffffff}SPECIAL_ACTION_CARRY"}
+    {"SPECIAL_ACTION_NONE"},
+    {"SPECIAL_ACTION_USEJETPACK"},
+    {"SPECIAL_ACTION_DANCE1"},
+    {"SPECIAL_ACTION_DANCE2"},
+    {"SPECIAL_ACTION_DANCE3"},
+    {"SPECIAL_ACTION_DANCE4"},
+    {"SPECIAL_ACTION_HANDSUP"},
+    {"SPECIAL_ACTION_USECELLPHONE"},
+    {"SPECIAL_ACTION_SITTING*"},
+    {"SPECIAL_ACTION_STOPUSECELLPHONE"},
+    {"SPECIAL_ACTION_DUCK*"},
+    {"SPECIAL_ACTION_ENTER_VEHICLE*"},
+    {"SPECIAL_ACTION_EXIT_VEHICLE*"},
+    {"SPECIAL_ACTION_DRINK_BEER"},
+    {"SPECIAL_ACTION_SMOKE_CIGGY"},
+    {"SPECIAL_ACTION_DRINK_WINE"},
+    {"SPECIAL_ACTION_DRINK_SPRUNK"},
+    {"SPECIAL_ACTION_PISSING"},
+    {"SPECIAL_ACTION_CUFFED"},
+    {"SPECIAL_ACTION_CARRY"}
 };
 
 //Dialog
 enum
 {
-    DIALOG_MODEL_ID,
+    DIALOG_MODEL_ID = 18000,
     DIALOG_SELECT_BONE,
     DIALOG_TOY_NAME,
-    DIALOG_MODIFY_MULTIPLIER
+    DIALOG_MODIFY_MULTIPLIER,
+    DIALOG_SPECIAL_ACTION
 }
 
 //States
@@ -137,6 +139,7 @@ stock SendPlayerToysInfo(playerid)
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/rtoy {ffffff}- Valores predeterminados del editor.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/toys {ffffff}- Entrar al creador de accesorios.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/pc {ffffff}- Usar el editor de toys de SA-MP para ordenador.");
+    SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/actions {ffffff}- Usar acciones especiales.");
     return 1;
 }
 
@@ -714,6 +717,36 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             }
             return 1;
         }
+        case DIALOG_SPECIAL_ACTION:
+        {
+            if(response)
+            {
+                switch(listitem)
+                {
+                    case 0: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+                    case 1: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_USEJETPACK);
+                    case 2: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE1);
+                    case 3: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE2);
+                    case 4: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE3);
+                    case 5: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE4);
+                    case 6: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_HANDSUP);
+                    case 7: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_USECELLPHONE);
+                    case 8: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_SITTING);
+                    case 9: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_STOPUSECELLPHONE);
+                    case 10: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DUCK);
+                    case 11: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_ENTER_VEHICLE);
+                    case 12: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_EXIT_VEHICLE);
+                    case 13: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DRINK_BEER);
+                    case 14: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_SMOKE_CIGGY);
+                    case 15: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DRINK_WINE);
+                    case 16: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DRINK_SPRUNK);
+                    case 17: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_PISSING);
+                    case 18: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CUFFED);
+                    case 19: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_CARRY);
+                }
+            }
+            return 1;
+        }
     }
     return 0;
 }
@@ -1190,6 +1223,21 @@ CMD:pc(playerid, params[])
     EditAttachedObject(playerid, 1);
 
     SendClientMessage(playerid, X_ALERT_COLOR, "Si no puedes ver el editor significa que estas bug, o no eres de PC.");
+    return 1;
+}
+
+CMD:actions(playerid, params[])
+{
+    if(InToyMaker[playerid]) return SendClientMessage(playerid, X_ALERT_COLOR, "Debes salir del editor.");
+
+    new dialog[128 * sizeof SpecialActions], line_str[256];
+    for(new i = 0; i != sizeof SpecialActions; i ++)
+    {
+        format(line_str, sizeof(line_str), "%s\n", SpecialActions[i]);
+        strcat(dialog, line_str);
+    }
+
+    ShowPlayerDialog(playerid, DIALOG_SPECIAL_ACTION, DIALOG_STYLE_LIST, "SetPlayerSpecialAction", dialog, "Continuar", "Cerrar");
     return 1;
 }
 
