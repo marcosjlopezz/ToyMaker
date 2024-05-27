@@ -19,7 +19,7 @@
 
 #define     SERVER_NAME         "ToyMaker"
 
-#define     SERVER_INFO         "AttachedObjects Maker r"MAKER_VERSION""
+#define     SERVER_INFO         "Release "MAKER_VERSION""
 #define     HOSTNAME            "» "SERVER_NAME" [0.3.7] «"
 
 #define     INFO_COLOR          "f6e58d"
@@ -68,6 +68,31 @@ new ToysBones[][24] =
 	{"Hombro derecho"},
 	{"Cuello"},
 	{"Boca"}
+};
+
+//Others
+new SpecialActions[][445] =
+{
+    {"{ffffff}SPECIAL_ACTION_NONE"},
+    {"{ffffff}SPECIAL_ACTION_USEJETPACK"},
+    {"{ffffff}SPECIAL_ACTION_DANCE1"},
+    {"{ffffff}SPECIAL_ACTION_DANCE2"},
+    {"{ffffff}SPECIAL_ACTION_DANCE3"},
+    {"{ffffff}SPECIAL_ACTION_DANCE4"},
+    {"{ffffff}SPECIAL_ACTION_HANDSUP"},
+    {"{ffffff}SPECIAL_ACTION_USECELLPHONE"},
+    {"{cccccc}SPECIAL_ACTION_SITTING*{ffffff}"},
+    {"{ffffff}SPECIAL_ACTION_STOPUSECELLPHONE"},
+    {"{ffffff}SPECIAL_ACTION_DUCK*"},
+    {"{cccccc}SPECIAL_ACTION_ENTER_VEHICLE *{ffffff}"},
+    {"{cccccc}SPECIAL_ACTION_EXIT_VEHICLE *{ffffff}"},
+    {"{ffffff}SPECIAL_ACTION_DRINK_BEER"},
+    {"{ffffff}SPECIAL_ACTION_SMOKE_CIGGY"},
+    {"{ffffff}SPECIAL_ACTION_DRINK_WINE"},
+    {"{ffffff}SPECIAL_ACTION_DRINK_SPRUNK"},
+    {"{ffffff}SPECIAL_ACTION_PISSING"},
+    {"{ffffff}SPECIAL_ACTION_CUFFED"},
+    {"{ffffff}SPECIAL_ACTION_CARRY"}
 };
 
 //Dialog

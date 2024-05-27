@@ -11,4 +11,4 @@ server_log.txt
 *.log
 
 #Compiled Files
-tm.amx
+gamemodes/tm.amx
