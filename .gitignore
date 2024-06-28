@@ -1,11 +1,3 @@
-#Samp Server Files
-samp-npc
-samp03svr
-
-announce.exe
-samp-npc.exe
-samp-server.exe
-
 #Log Files
 server_log.txt
 *.log

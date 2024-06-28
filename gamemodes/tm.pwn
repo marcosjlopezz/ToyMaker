@@ -140,6 +140,8 @@ stock SendPlayerToysInfo(playerid)
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/toys {ffffff}- Entrar al creador de accesorios.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/pc {ffffff}- Usar el editor de toys de SA-MP para ordenador.");
     SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/actions {ffffff}- Usar acciones especiales.");
+    SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/anim {ffffff}- Ejecutar una animacion.");
+    SendClientMessage(playerid, -1, "{"#COMMANDS_COLOR"}/stop {ffffff}- Detener ejecucion de animacion.");
     return 1;
 }
 
@@ -1170,6 +1172,22 @@ CMD:toys(playerid, params[])
     }
 
     ShowPlayerToyMaker(playerid);
+    return 1;
+}
+
+CMD:anim(playerid)
+{
+    if(InToyMaker[playerid]) return SendClientMessage(playerid, X_ALERT_COLOR, "Debes salir del editor.");
+    new animlib[64], animname[64];
+    if(sscanf(params, "s[64]s[64]", animlib, animname)) return SendClientMessage(playerid, X_ALERT_COLOR, "Usa /anim [animlib] [animname]");
+
+    ApplyAnimation(playerid, animlib, animname, 4.1, true, false, false, false, 0, false);
+    return 1;
+}
+
+CMD:stop(playerid)
+{
+    ClearAnimations(playerid, false);
     return 1;
 }
 
