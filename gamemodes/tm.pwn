@@ -1177,7 +1177,7 @@ CMD:toys(playerid, params[])
 
 CMD:anim(playerid, params[])
 {
-    if(InToyMaker[playerid]) return SendClientMessage(playerid, X_ALERT_COLOR, "Debes salir del editor.");
+    //if(InToyMaker[playerid]) return SendClientMessage(playerid, X_ALERT_COLOR, "Debes salir del editor.");
     new animlib[64], animname[64];
     if(sscanf(params, "s[64]s[64]", animlib, animname)) return SendClientMessage(playerid, X_ALERT_COLOR, "Usa /anim [animlib] [animname]");
 
