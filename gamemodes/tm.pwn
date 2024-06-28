@@ -1181,7 +1181,7 @@ CMD:anim(playerid, params[])
     new animlib[64], animname[64];
     if(sscanf(params, "s[64]s[64]", animlib, animname)) return SendClientMessage(playerid, X_ALERT_COLOR, "Usa /anim [animlib] [animname]");
 
-    ApplyAnimation(playerid, animlib, animname, 4.1, false, false, false, false, false, false);
+    ApplyAnimation(playerid, animlib, animname, 4.1, false, false, false, true, false, false);
     return 1;
 }
 
